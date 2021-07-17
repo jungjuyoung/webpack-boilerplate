@@ -13,6 +13,7 @@ module.exports = {
 			'.json',
 		],
 	},
+	devtool: isDevelopment ? false : 'inline-source-map',
 	entry: {
 		app: [
 			'./src/index.js',

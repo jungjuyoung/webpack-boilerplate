@@ -1,0 +1,13 @@
+@import './variable';
+
+div {
+  &:last-child{
+    background:none;
+  }
+  background: $green;
+  .title{
+    font-size: $fontSize;
+    color: $purple;
+    font-weight: $bold;
+  }
+}

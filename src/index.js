@@ -1,24 +1,17 @@
-import style from './assets/scss/main.scss'
+import './assets/scss/main.scss'
 import beati from './assets/images/beauti.png'
-import _, { divide } from 'lodash'
+import _ from 'lodash'
 
-const component = () => {
-	let img = document.createElement('img')
-	let element = document.createElement('div')
-	element.innerHTML = _.join(
-		[
-			'Hello',
-			'Webpack',
-		],
-		''
-	)
+const img = document.createElement('img')
+img.src = beati
+img.width = 400
 
-	const body = document.querySelector('body')
-	img.alt = 'beautiful a woman'
-	img.width = 500
-	img.src = beati
+const heading = document.createElement('h1')
+heading.innerHTML = '웹팩 5 셋팅에 대하여...'
 
-	body.appendChild(img)
-	body.appendChild(element)
-}
-component()
+const content = document.createElement('div')
+content.className = 'title'
+content.innerHTML = _.join(['웹팩 5 버전의 설정', '연습해 봅니다'], '')
+
+const app = document.querySelector('#root')
+app.append(img, heading, content)

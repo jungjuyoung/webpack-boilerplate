@@ -7,9 +7,11 @@ const PrettierPlugin = require('prettier-webpack-plugin')
 
 module.exports = {
 	// where webpack looks to start building the bundle
-	entry: [
-		paths.src + '/index.js',
-	],
+	entry: {
+		app: [
+			paths.src + '/index.js',
+		],
+	},
 	// Where webpack outputs the assets and bundles
 	output: {
 		path: paths.build,

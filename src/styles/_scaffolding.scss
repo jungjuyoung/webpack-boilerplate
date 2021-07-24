@@ -1,0 +1,28 @@
+html {
+  max-width: $page-width;
+  line-height: 1.4;
+  font-size: $font-size;
+  background: $background-color;
+  color: $font-color;
+  font-family: $font-family;
+}
+
+body {
+  width: 100vw;
+  margin: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  align-self: center;
+}
+
+h1 {
+  max-width: 90vw;
+  margin: auto;
+  text-align: center;
+}

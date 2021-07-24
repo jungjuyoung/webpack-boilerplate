@@ -1,6 +1,12 @@
-import beati from './assets/images/beauti.png'
+import beati from '@/images/beauti.png'
 import _ from 'lodash'
-import './assets/scss/main.scss'
+import '@/styles/index.scss'
+class Game {
+  name = 'Violin Charades'
+}
+const myGame = new Game()
+const p = document.createElement('p')
+p.textContent = `I like ${myGame}.`
 
 const heading = document.createElement('h1')
 heading.innerHTML = '웹팩 5 셋팅에 대하여...'

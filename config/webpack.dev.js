@@ -1,5 +1,6 @@
 const webpack = require('webpack')
 const { merge } = require('webpack-merge')
+
 const common = require('./webpack.common')
 const paths = require('./path')
 const PORT = 8080
@@ -7,8 +8,10 @@ const PORT = 8080
 module.exports = merge(common, {
 	// set the made to development or production
 	mode: 'development',
+
 	// Control how source maps are generated
 	devtool: 'inline-source-map',
+
 	// Spin up a server for quick development
 	devServer: {
 		historyApiFallback: true,
@@ -18,6 +21,7 @@ module.exports = merge(common, {
 		hot: true,
 		port: PORT,
 	},
+
 	module: {
 		rules: [
 			// Styles: Inject CSS into the head with source maps
@@ -35,6 +39,7 @@ module.exports = merge(common, {
 			},
 		],
 	},
+
 	plugins: [
 		// Only update what has changed on hot reload
 		new webpack.HotModuleReplacementPlugin(),

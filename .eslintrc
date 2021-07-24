@@ -13,8 +13,7 @@
     ],
     "prefer-template": "off",
     "indent": [
-      1,
-      2
+      4
     ],
     "object-curly-spacing": 1,
     "no-multiple-empty-lines": [

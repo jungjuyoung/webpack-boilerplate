@@ -41,7 +41,7 @@ module.exports = {
 				test: /\.(js | jsx)$/,
 				exclude: /node_modules/,
 				use: [
-					'babel-loader',
+					'babel-loader', // without additional settings, this will reference .babelrc file.
 				],
 			},
 

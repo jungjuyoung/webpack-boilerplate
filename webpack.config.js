@@ -10,6 +10,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: '[name].bundle.js',
+    assetModuleFilename: 'images/[name][ext]',
   },
   devServer: {
     open: true,
@@ -34,10 +35,19 @@ module.exports = {
         exclude: /node_modules/,
         use: ['babel-loader'],
       },
+
       // CSS, PostCss, and Sass
       {
         test: /\.(sc|c)ss$/,
         use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+      },
+      // Images
+      {
+        test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
+        type: 'asset/resource', // previously, the file-loader was responsible
+        generator: {
+          filename: 'static/[name][ext]',
+        },
       },
     ],
   },

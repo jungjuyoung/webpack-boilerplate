@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack serve --progress",
     "watch": "webpack --watch",
-    "build": "webpack"
+    "build": "NODE_ENV=production webpack",
+    "build-dev": "webpack"
   },
   "author": "",
   "license": "ISC",

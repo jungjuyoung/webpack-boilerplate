@@ -49,7 +49,7 @@ module.exports = {
         type: 'asset', // according to the default conditions automatically selects between resource and inline
         parser: {
           dataUrlCondition: {
-            maxSize: 20 * 1024, // 20KB
+            maxSize: 20 * 1024, // less than 20KB
           },
         },
       },

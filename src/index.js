@@ -23,3 +23,6 @@ heading.textContent = 'Interesting!'
 const app = document.querySelector('#root')
 
 app.append(heading, p)
+console.log(`process.env.NODE_ENV: ${process.env.NODE_ENV}`)
+console.log(word)
+console.log(api.domain)

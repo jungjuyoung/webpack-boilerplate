@@ -40,6 +40,12 @@ module.exports = {
       Author: ${childProcess.execSync('git config user.name')}
       `,
     }),
+    new webpack.DefinePlugin({
+      word: JSON.stringify(
+        '이곳은 전역변수로 접근해서 값을 읽어올 수 있는 웹팩 정의형 플러그인이다.'
+      ),
+      'api.domain': JSON.stringify(`http://dev.api.domain.com`),
+    }),
   ],
   module: {
     rules: [

@@ -3,6 +3,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 const childProcess = require('child_process')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 let mode = 'development'
 if (process.env.NODE_ENV === 'production') {
@@ -22,7 +23,7 @@ module.exports = {
   devServer: {
     open: true,
     hot: true,
-    compress: true,
+    compress: process.env.NODE_ENV === 'production' ? true : false,
     host: 'localhost',
     port: 8000,
   },
@@ -56,6 +57,9 @@ module.exports = {
           : JSON.stringify(`http://dev.api.domain.com`),
     }),
     new CleanWebpackPlugin(),
+    ...(process.env.NODE_ENV === 'production'
+      ? [new MiniCssExtractPlugin({ filename: '[name].css' })]
+      : []),
   ],
   module: {
     rules: [
@@ -70,7 +74,14 @@ module.exports = {
       // CSS, PostCss, and Sass
       {
         test: /\.(sc|c)ss$/,
-        use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+        use: [
+          process.env.NODE_ENV === 'production'
+            ? MiniCssExtractPlugin.loader
+            : 'style-loader',
+          'css-loader',
+          'postcss-loader',
+          'sass-loader',
+        ],
       },
 
       // Images

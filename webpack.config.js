@@ -1,7 +1,8 @@
 const path = require('path')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MyWebpackPlugin = require('./my-webpack-plugin')
+const webpack = require('webpack')
+const childProcess = require('child_process')
 
 let mode = 'development'
 if (process.env.NODE_ENV === 'production') {
@@ -32,7 +33,13 @@ module.exports = {
       filename: 'index.html', // output file
     }),
     new CleanWebpackPlugin(),
-    new MyWebpackPlugin(),
+    new webpack.BannerPlugin({
+      banner: `
+      Build Date: ${new Date().toISOString().split('T')[0]}
+      Commit Version: ${childProcess.execSync('git rev-parse --short HEAD')}
+      Author: ${childProcess.execSync('git config user.name')}
+      `,
+    }),
   ],
   module: {
     rules: [

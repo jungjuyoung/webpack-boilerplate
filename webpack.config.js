@@ -1,6 +1,7 @@
 const path = require('path')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MyWebpackPlugin = require('./my-webpack-plugin')
 
 let mode = 'development'
 if (process.env.NODE_ENV === 'production') {
@@ -31,6 +32,7 @@ module.exports = {
       filename: 'index.html', // output file
     }),
     new CleanWebpackPlugin(),
+    new MyWebpackPlugin(),
   ],
   module: {
     rules: [

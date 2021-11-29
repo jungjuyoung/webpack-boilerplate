@@ -23,7 +23,6 @@ module.exports = {
   devServer: {
     open: true,
     hot: true,
-    compress: process.env.NODE_ENV === 'production' ? true : false,
     host: 'localhost',
     port: 8000,
   },
@@ -35,8 +34,8 @@ module.exports = {
       minify:
         process.env.NODE_ENV === 'production'
           ? {
-              collapseWhitespace: true,
-              removeComments: true,
+              collapseWhitespace: true, // 빈칸제거
+              removeComments: true, // 주석제거
             }
           : false,
     }),
@@ -48,9 +47,6 @@ module.exports = {
       `,
     }),
     new webpack.DefinePlugin({
-      word: JSON.stringify(
-        '이곳은 전역변수로 접근해서 값을 읽어올 수 있는 웹팩 정의형 플러그인이다.'
-      ),
       'api.domain':
         process.env.NODE_ENV === 'production'
           ? JSON.stringify(`http://api.domain.com`)
@@ -94,6 +90,8 @@ module.exports = {
           },
         },
       },
+
+      // Font
     ],
   },
 }

@@ -28,11 +28,17 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Webpack FrontEnd Boilerplate',
+      title: `FrontEnd Boilerplate (${mode})`,
       template: path.resolve(__dirname, './src/template.html'), // template file
       filename: 'index.html', // output file
+      minify:
+        process.env.NODE_ENV === 'production'
+          ? {
+              collapseWhitespace: true,
+              removeComments: true,
+            }
+          : false,
     }),
-    new CleanWebpackPlugin(),
     new webpack.BannerPlugin({
       banner: `
       Build Date: ${new Date().toISOString().split('T')[0]}
@@ -44,8 +50,12 @@ module.exports = {
       word: JSON.stringify(
         '이곳은 전역변수로 접근해서 값을 읽어올 수 있는 웹팩 정의형 플러그인이다.'
       ),
-      'api.domain': JSON.stringify(`http://dev.api.domain.com`),
+      'api.domain':
+        process.env.NODE_ENV === 'production'
+          ? JSON.stringify(`http://api.domain.com`)
+          : JSON.stringify(`http://dev.api.domain.com`),
     }),
+    new CleanWebpackPlugin(),
   ],
   module: {
     rules: [

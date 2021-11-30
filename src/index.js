@@ -3,7 +3,7 @@ import './styles/main.scss'
 import cat from './images/nyancat.jpg'
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.body.innerHTML = `<img src="${cat}"/>`
+  // document.body.innerHTML = `<img src="${cat}"/>`
 })
 
 // Create a class property without a constructor

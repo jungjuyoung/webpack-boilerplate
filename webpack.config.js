@@ -91,7 +91,18 @@ module.exports = {
         },
       },
 
-      // Font
+      // Font and SVGs
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/inline', // previously, the url-loader was responsible.
+        use: [
+          {
+            options: {
+              name: 'assets/fonts/[name].[hash:8].[ext]',
+            },
+          },
+        ],
+      },
     ],
   },
 }

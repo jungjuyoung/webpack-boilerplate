@@ -72,11 +72,11 @@ module.exports = {
         test: /\.(sc|c)ss$/,
         use: [
           process.env.NODE_ENV === 'production'
-            ? MiniCssExtractPlugin.loader
-            : 'style-loader',
-          'css-loader',
-          'postcss-loader',
-          'sass-loader',
+            ? MiniCssExtractPlugin.loader //
+            : 'style-loader', // create style nodes from JS strings
+          'css-loader', // translates css into commonJS
+          'postcss-loader', // morder css like auto prefix
+          'sass-loader', //compiles scss to css
         ],
       },
 

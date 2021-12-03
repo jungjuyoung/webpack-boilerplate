@@ -11,6 +11,11 @@
     "build-dev": "webpack",
     "clean": "rm -rf dist"
   },
+  "husky":{
+    "hooks":{
+      "pre-commit":"echo \"이것은 커밋전에 출력됨\""
+    }
+  },
   "author": "",
   "license": "ISC",
   "devDependencies": {
@@ -28,6 +33,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-webpack-plugin": "^3.1.1",
     "html-webpack-plugin": "^5.5.0",
+    "husky": "^7.0.4",
     "mini-css-extract-plugin": "^2.4.5",
     "node-sass": "^6.0.1",
     "postcss-loader": "^6.2.1",

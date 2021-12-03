@@ -9,7 +9,7 @@
       }
     ],
     "prefer-template": "off",
-    "indent": [4],
+    "indent": [2],
     "object-curly-spacing": 1,
     "no-multiple-empty-lines": [
       1,

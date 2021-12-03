@@ -1,1 +1,1 @@
-console.log('Other files...')
+console.log('Other files...');

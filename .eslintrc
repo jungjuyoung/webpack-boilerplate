@@ -1,8 +1,5 @@
 {
-  "ignorePatterns": [
-    "dist",
-    "node_modules"
-  ],
+  "ignorePatterns": ["dist", "node_modules"],
   "rules": {
     "max-len": [
       "error",
@@ -12,9 +9,7 @@
       }
     ],
     "prefer-template": "off",
-    "indent": [
-      4
-    ],
+    "indent": [4],
     "object-curly-spacing": 1,
     "no-multiple-empty-lines": [
       1,
@@ -31,15 +26,9 @@
     "no-template-curly-in-string": 1,
     "no-self-compare": 1,
     "import/prefer-default-export": 0,
-    "func-names": [
-      1,
-      "as-needed"
-    ],
+    "func-names": [1, "as-needed"],
     "arrow-body-style": 1,
-    "semi": [
-      1,
-      "never"
-    ],
+    "semi": [1, "never"],
     "import/no-extraneous-dependencies": [
       "off",
       {
@@ -51,11 +40,7 @@
     "browser": true,
     "es6": true
   },
-  "extends": [
-    "eslint:recommended",
-    "airbnb-base",
-    "prettier"
-  ],
+  "extends": ["eslint:recommended", "plugin:prettier/recommended"],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
@@ -64,9 +49,7 @@
     "ecmaVersion": 11,
     "sourceType": "module"
   },
-  "plugins": [
-    "prettier"
-  ],
+  "plugins": ["prettier"],
   "settings": {
     "import/resolver": {
       "webpack": {

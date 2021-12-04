@@ -4,11 +4,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const childProcess = require('child_process');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// const apiMocker = require('connect-api-mocker');
+const apiMocker = require('connect-api-mocker');
 
 let mode = 'development';
 process.env.NODE_ENV === 'production' ? (mode = 'production') : null;
 const port = 8000;
+const serverPOSRT = 8001;
 
 module.exports = {
   mode,
@@ -30,24 +31,21 @@ module.exports = {
       overlay: true,
     },
     onBeforeSetupMiddleware: devServer => {
-      devServer.app.get('/api/users', (req, res) => {
-        res.json([
-          { id: 1, name: 'Nadia' },
-          { id: 2, name: 'Bek' },
-          { id: 3, name: 'Chris' },
-        ]);
-      });
+      //   // devServer.app.get('/api/users', (req, res) => {
+      //   //   res.json([
+      //   //     { id: 1, name: 'Nadia' },
+      //   //     { id: 2, name: 'Bek' },
+      //   //     { id: 3, name: 'Chris' },
+      //   //   ]);
+      //   // });
+      devServer.app.use(apiMocker('/api', 'mock/api'));
     },
-    // proxy: {
-    //   '/api/*': {
-    //     target: `http://localhost:${port}`,
-    //     changeOrigin: true,
-    //   },
-    //   '/v1/*': {
-    //     target: 'https://openapi.naver.com',
-    //     changeOrigin: true,
-    //   },
-    // },
+    proxy: {
+      '/api/*': {
+        target: `http://localhost:${serverPOSRT}`, // 서버포트
+        changeOrigin: true,
+      },
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({

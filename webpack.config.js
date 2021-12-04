@@ -4,9 +4,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const childProcess = require('child_process');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// const apiMocker = require('connect-api-mocker');
 
 let mode = 'development';
 process.env.NODE_ENV === 'production' ? (mode = 'production') : null;
+const port = 8000;
 
 module.exports = {
   mode,
@@ -22,11 +24,30 @@ module.exports = {
     open: true,
     hot: true,
     host: 'localhost',
-    port: 8000,
+    port,
     historyApiFallback: true,
     client: {
       overlay: true,
     },
+    onBeforeSetupMiddleware: devServer => {
+      devServer.app.get('/api/users', (req, res) => {
+        res.json([
+          { id: 1, name: 'Nadia' },
+          { id: 2, name: 'Bek' },
+          { id: 3, name: 'Chris' },
+        ]);
+      });
+    },
+    // proxy: {
+    //   '/api/*': {
+    //     target: `http://localhost:${port}`,
+    //     changeOrigin: true,
+    //   },
+    //   '/v1/*': {
+    //     target: 'https://openapi.naver.com',
+    //     changeOrigin: true,
+    //   },
+    // },
   },
   plugins: [
     new HtmlWebpackPlugin({

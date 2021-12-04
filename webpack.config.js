@@ -1,13 +1,13 @@
-const path = require('path')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const webpack = require('webpack')
-const childProcess = require('child_process')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const path = require('path');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+const childProcess = require('child_process');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-let mode = 'development'
+let mode = 'development';
 if (process.env.NODE_ENV === 'production') {
-  mode = 'production'
+  mode = 'production';
 }
 
 module.exports = {
@@ -21,10 +21,11 @@ module.exports = {
     assetModuleFilename: 'images/[hash][ext][query]',
   },
   devServer: {
+    historyApiFallback: true,
     open: true,
     hot: true,
     host: 'localhost',
-    port: 8000,
+    port: 8080,
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -105,4 +106,4 @@ module.exports = {
       },
     ],
   },
-}
+};

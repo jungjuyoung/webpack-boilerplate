@@ -10,8 +10,7 @@
     "build": "NODE_ENV=production webpack",
     "build-dev": "webpack",
     "clean": "rm -rf dist",
-    "pre-commit": "lint-staged",
-    "prepare": "husky install"
+    "pre-commit": "echo \"이게 커밋전에 동작함.\""
   },
   "lint-staged": {
     "**/*.{ts,js}": [

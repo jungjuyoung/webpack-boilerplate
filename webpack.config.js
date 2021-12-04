@@ -6,9 +6,7 @@ const childProcess = require('child_process');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 let mode = 'development';
-if (process.env.NODE_ENV === 'production') {
-  mode = 'production';
-}
+process.env.NODE_ENV === 'production' ? (mode = 'production') : null;
 
 module.exports = {
   mode,
@@ -21,11 +19,14 @@ module.exports = {
     assetModuleFilename: 'images/[hash][ext][query]',
   },
   devServer: {
-    historyApiFallback: true,
     open: true,
     hot: true,
     host: 'localhost',
-    port: 8080,
+    port: 8000,
+    historyApiFallback: true,
+    client: {
+      overlay: true,
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({

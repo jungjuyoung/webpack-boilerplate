@@ -6,6 +6,7 @@ const childProcess = require('child_process');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const apiMocker = require('connect-api-mocker');
 const TerserPlugin = require('terser-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 let mode = process.env.NODE_ENV || 'development';
 console.log(`webpack.config.js process.env.NODE_ENV: ${process.env.NODE_ENV}`);
@@ -78,6 +79,14 @@ module.exports = {
     ...(process.env.NODE_ENV === 'production'
       ? [new MiniCssExtractPlugin({ filename: '[name].css' })]
       : []),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: './node_modules/axios/dist/axios.min.js',
+          to: './axios.min.js',
+        },
+      ],
+    }),
   ],
   optimization: {
     minimize: true,
@@ -93,6 +102,12 @@ module.exports = {
             }),
           ]
         : [],
+  },
+  externals: {
+    // 웹팩이 빌드할때 axios를 전역변수에 넣어놓고 전역변수 axios를 사용하라는 것.
+    // 주로 node_modules에 있는 이미 빌드된 파일들은 또 빌드할 필요없이 바로 사용하면 됨.
+    // 빌드 될 때 axios를 html에서 사용하려면 이것을 copy해야함.
+    axios: 'axios',
   },
   module: {
     rules: [

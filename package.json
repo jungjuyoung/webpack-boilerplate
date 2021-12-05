@@ -6,8 +6,8 @@
   "scripts": {
     "start": "webpack serve --progress",
     "watch": "webpack --watch",
-    "build": "NODE_ENV=production webpack",
-    "build-dev": "webpack",
+    "build": "NODE_ENV=production webpack --progress",
+    "build-dev": "NODE_ENV=development webpack",
     "clean": "rm -rf dist",
     "pre-commit": "lint-staged"
   },
@@ -49,6 +49,7 @@
     "prettier": "^2.5.0",
     "sass-loader": "^12.3.0",
     "style-loader": "^3.3.1",
+    "terser-webpack-plugin": "^5.2.5",
     "webpack": "^5.64.4",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.6.0"

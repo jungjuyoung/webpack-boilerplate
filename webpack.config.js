@@ -5,9 +5,10 @@ const webpack = require('webpack');
 const childProcess = require('child_process');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const apiMocker = require('connect-api-mocker');
+const TerserPlugin = require('terser-webpack-plugin');
 
-let mode = 'development';
-process.env.NODE_ENV === 'production' ? (mode = 'production') : null;
+let mode = process.env.NODE_ENV || 'development';
+console.log(`webpack.config.js process.env.NODE_ENV: ${process.env.NODE_ENV}`);
 const port = 8000;
 const serverPOSRT = 8001;
 
@@ -78,6 +79,21 @@ module.exports = {
       ? [new MiniCssExtractPlugin({ filename: '[name].css' })]
       : []),
   ],
+  optimization: {
+    minimize: true,
+    minimizer:
+      mode === 'production'
+        ? [
+            new TerserPlugin({
+              terserOptions: {
+                compress: {
+                  drop_console: true, // 콘솔 로그를 제거한다
+                },
+              },
+            }),
+          ]
+        : [],
+  },
   module: {
     rules: [
       // JavaScript

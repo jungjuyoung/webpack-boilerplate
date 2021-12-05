@@ -1,6 +1,6 @@
 import './styles/main.scss';
-import cat from './images/nyancat.jpg';
-
+// import cat from './images/nyancat.jpg';
+import axios from 'axios';
 document.addEventListener('DOMContentLoaded', () => {
   // document.body.innerHTML = `<img src="${cat}"/>`
 });
@@ -23,5 +23,12 @@ const app = document.querySelector('#root');
 
 app.append(heading, p);
 console.log(`process.env.NODE_ENV: ${process.env.NODE_ENV}`);
-console.log(word);
-console.log(api.domain);
+axios.get('/api/users', (req, res) => {
+  console.log(req.data);
+  console.log(res);
+});
+
+import(/* webpackChunkName: "result" */ '../app.js').then(module => {
+  const result = module.default;
+  console.log(result);
+});

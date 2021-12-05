@@ -1,1 +1,4 @@
-console.log('Other files...');
+document.addEventListener('DOMContentLoaded', () => {
+  // document.body.innerHTML = `<img src="${cat}"/>`
+  console.log('DOMContentLoaded ...');
+});
